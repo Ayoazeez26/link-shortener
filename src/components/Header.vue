@@ -14,11 +14,15 @@
     </div>
     <div
       class="hamburger"
-      @click="showNav"
+      @click="toggleNav"
     >
         &#9776;
     </div>
-    <div class="nav-scroll">
+    <div
+      class="nav-scroll"
+      id="idNav"
+      ref="navId"
+    >
       <ul class="items">
         <li>Features</li>
         <li>Pricing</li>
@@ -38,8 +42,13 @@ export default {
     msg: String
   },
   methods: {
-    showNav() {
-
+    toggleNav() {
+      let navScroll = document.querySelector('.nav-scroll');
+      if (navScroll.style.top === '-500px') {
+        navScroll.style.top = '0';
+      } else {
+        navScroll.style.top = '-500px';
+      }
     }
   }
 }
@@ -118,7 +127,7 @@ h4 {
 
 .nav-scroll {
   position: absolute;
-  top: 0;
+  top: -500px;
   width: 90%;
   height: 400px;
   margin: 0 auto;
@@ -128,6 +137,7 @@ h4 {
   color: #ffffff;
   font-size: 18px;
   margin-top: 70px;
+  transition: all .3s cubic-bezier(.03, .84, .18, 1.01);
 }
 
 .items {
