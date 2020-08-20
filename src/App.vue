@@ -2,18 +2,21 @@
   <div id="app">
     <Header />
     <FirstSection />
+    <ShortenInput />
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
 import FirstSection from './components/FirstSection.vue'
+import ShortenInput from './components/ShortenInput.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
-    FirstSection
+    FirstSection,
+    ShortenInput
   }
 }
 </script>

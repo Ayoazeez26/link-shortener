@@ -109,8 +109,5 @@ export default {
     font-size: 16px;
     line-height: 21px;
   }
-
-
-
 }
 </style>
