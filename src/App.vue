@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     <Header />
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <FirstSection />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
+import FirstSection from './components/FirstSection.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    Header
+    Header,
+    FirstSection
   }
 }
 </script>
@@ -57,6 +57,14 @@ export default {
 
 .very-dark-violet {
   color: hsl(260, 8%, 14%);
+}
+
+@media screen and (max-width: 1279px) {
+    
+  #app {
+    width: 100%;
+  }
+
 }
 
 @media screen and (max-width: 768px) {

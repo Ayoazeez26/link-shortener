@@ -38,9 +38,6 @@
 <script>
 export default {
   name: 'Header',
-  props: {
-    msg: String
-  },
   methods: {
     toggleNav() {
       let navScroll = document.querySelector('.nav-scroll');
@@ -138,6 +135,7 @@ h4 {
   font-size: 18px;
   margin-top: 70px;
   transition: all .3s cubic-bezier(.03, .84, .18, 1.01);
+  z-index: 99;
 }
 
 .items {
