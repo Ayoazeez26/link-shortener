@@ -58,4 +58,12 @@ export default {
 .very-dark-violet {
   color: hsl(260, 8%, 14%);
 }
+
+@media screen and (max-width: 768px) {
+    
+  #app {
+    width: 90%;
+  }
+
+}
 </style>

@@ -12,6 +12,22 @@
       <a class="login" href="#">Login</a>
       <a class="signup" href="#">Sign Up</a>
     </div>
+    <div
+      class="hamburger"
+      @click="showNav"
+    >
+        &#9776;
+    </div>
+    <div class="nav-scroll">
+      <ul class="items">
+        <li>Features</li>
+        <li>Pricing</li>
+        <li>Resources</li>
+        <li><hr></li>
+        <li><a href="#">Login</a></li>
+        <li class="signup-mobile"><a href="#">Sign Up</a></li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -20,6 +36,11 @@ export default {
   name: 'Header',
   props: {
     msg: String
+  },
+  methods: {
+    showNav() {
+
+    }
   }
 }
 </script>
@@ -27,16 +48,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .header {
-  border: 1px solid black;
-  position: fixed;
-  top: 0;
-  width: 1280px;
+  width: 100%;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #ffffff;
-  z-index: 99;
 }
 
 .navbar {
@@ -93,10 +110,68 @@ h4 {
   background-color: hsl(180, 66%, 49%);
 }
 
+.hamburger {
+  display: none;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.nav-scroll {
+  position: absolute;
+  top: 0;
+  width: 90%;
+  height: 400px;
+  margin: 0 auto;
+  background-color: hsl(257, 27%, 26%);
+  border-radius: 10px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 70px;
+}
+
+.items {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.items li {
+  list-style-type: none;
+  width: 90%;
+
+}
+
+.items a {
+  text-decoration: none;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.signup-mobile {
+  background-color: hsl(180, 66%, 49%);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 40px;
+}
+
 @media screen and (max-width: 768px) {
   .nav-el,
   .div-user {
     display: none;
   }
+
+  .hamburger {
+    display: block;
+  }
+
+  /* .header {
+    width: 100%;
+  } */
 }
 </style>
