@@ -1,15 +1,46 @@
 <template>
   <div class="shortenInput">
     <form class="flexInputs">
-      <input type="text" name="link" id="link" placeholder="Shorten a link here...">
-      <a class="shorten" href="#">Shorten It!</a>
+      <input
+        type="text"
+        name="link"
+        v-model="form.linkInput"
+        id="link"
+        placeholder="Shorten a link here...">
+      <a class="shorten" @click="showLink" href="#">Shorten It!</a>
     </form>
   </div>
 </template>
 
 <script>
+var axios = require('axios');
 export default {
-  name: 'ShortenInput'
+  name: 'ShortenInput',
+  data() {
+    return {
+      form: {
+        linkInput: ''
+      }
+    }
+  },
+  methods: {
+    showLink(e) {
+      e.preventDefault();
+      console.log(this.form.linkInput);
+      axios
+      .post('https://rel.ink/api/links/', {
+        url : this.form.linkInput
+      })
+      .then(function (response){
+        // console.log(response.data.hashid);
+        axios.get(`https://rel.ink/api/links/${response.data.hashid}/`)
+        .then(console.log(response))
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+  }
 }
 </script>
 
@@ -24,6 +55,8 @@ export default {
   justify-content: center;
   align-content: center;
   margin-top: 50px;
+  width: 1280px;
+  margin: 0 auto;
 }
 .flexInputs {
   display: flex;
@@ -51,6 +84,11 @@ export default {
   align-items: center;
   font-size: 1.5em;
 }
+@media screen and (max-width: 1279px) {
+  .shortenInput {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 1140px) {
   .flexInputs {
     width: 94%;
@@ -76,6 +114,7 @@ export default {
   .shortenInput {
     margin-top: 70px;
     height: 175px;
+    width: 90%;
   }
   .flexInputs {
     flex-direction: column;

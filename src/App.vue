@@ -3,6 +3,7 @@
     <Header />
     <FirstSection />
     <ShortenInput />
+    <AdvSta />
   </div>
 </template>
 
@@ -10,13 +11,15 @@
 import Header from './components/Header.vue'
 import FirstSection from './components/FirstSection.vue'
 import ShortenInput from './components/ShortenInput.vue'
+import AdvSta from './components/AdvSta.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
     FirstSection,
-    ShortenInput
+    ShortenInput,
+    AdvSta
   }
 }
 </script>
@@ -30,51 +33,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  width: 1280px;
+  width: 100%;
   margin: 0 auto;
-}
-
-.cyan {
-  color: hsl(180, 66%, 49%);
-}
-
-.dark-violet {
-  color: hsl(257, 27%, 26%);
-}
-
-.red {
-  color: hsl(0, 87%, 67%);
-}
-
-.gray {
-  color: hsl(0, 0%, 75%)
-}
-
-.grayish-violet {
-  color: hsl(257, 7%, 63%);
-}
-
-.very-dark-blue {
-  color: hsl(255, 11%, 22%);
-}
-
-.very-dark-violet {
-  color: hsl(260, 8%, 14%);
-}
-
-@media screen and (max-width: 1279px) {
-    
-  #app {
-    width: 100%;
-  }
-
-}
-
-@media screen and (max-width: 768px) {
-    
-  #app {
-    width: 90%;
-  }
-
 }
 </style>

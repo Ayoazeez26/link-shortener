@@ -54,12 +54,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .header {
-  width: 100%;
+  width: 1280px;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #ffffff;
+  margin: 0 auto;
 }
 
 .navbar {
@@ -168,18 +169,22 @@ h4 {
   border-radius: 40px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) { 
+  .header {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {   
+  .header {
+    width: 90%;
+  }
   .nav-el,
   .div-user {
     display: none;
   }
-
   .hamburger {
     display: block;
   }
-
-  /* .header {
-    width: 100%;
-  } */
 }
 </style>

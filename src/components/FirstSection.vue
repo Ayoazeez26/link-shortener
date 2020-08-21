@@ -23,6 +23,8 @@ export default {
   align-items: center;
   height: 480px;
   font-size: 18px;
+  width: 1280px;
+  margin: 0 auto;
 }
 
 .big-heading {
@@ -55,6 +57,12 @@ export default {
   right: 0;
 }
 
+@media screen and (max-width: 1279px) {
+  .firstSection {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 1120px) {
   .big-heading h1 {
     font-size: 42px;
@@ -84,6 +92,7 @@ export default {
     align-items: center;
     text-align: center;
     height: auto;
+    width: 90%;
   }
   
   .firstSection img {
