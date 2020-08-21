@@ -50,15 +50,12 @@ export default {
   cursor: pointer;
 }
 
-
 .firstSection img {
   position: absolute;
   right: 0;
 }
 
-
 @media screen and (max-width: 1120px) {
-      
   .big-heading h1 {
     font-size: 42px;
   line-height: 48px;
