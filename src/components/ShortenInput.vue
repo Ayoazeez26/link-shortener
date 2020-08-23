@@ -12,18 +12,26 @@
           <a class="shorten" @click="showLink" href="#">Shorten It!</a>
         </form>
       </div>
-      <shortened-links
-        v-show="checkReturn"
-        :linkInput="form.linkInput"
-        :shortLink="shortLink"
-      />
+      <div class="linkOutput"> 
+        <shortened-links
+          v-show="checkReturn"
+          v-for="link in wholeLinks"
+          :key="link.id"
+          :linkInput="link.mainLink"
+          :shortLink="link.shortLink"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import ShortenedLinks from './ShortenedLinks.vue';
+import { v4 as uuidv4 } from 'uuid';
+
+
 var axios = require('axios');
+
 export default {
   components: {
     'shortened-links' : ShortenedLinks
@@ -34,6 +42,7 @@ export default {
       form: {
         linkInput: ''
       },
+      wholeLinks: [],
       shortLink: '',
       checkReturn: false
     }
@@ -54,11 +63,16 @@ export default {
       });
     },
     getLink(link) {
-      this.shortLink = `https://rel.ink/api/links/${link}/`;
+      this.shortLink = `https://rel.ink/${link}/`;
       if(link) {
         this.checkReturn = true;
       }
-      console.log(this.shortLink, this.checkReturn);
+      this.wholeLinks.push({
+        mainLink: this.form.linkInput,
+        shortLink: this.shortLink,
+        id: uuidv4()
+      });
+      console.log(this.wholeLinks);
     }
   }
 }
@@ -112,6 +126,9 @@ export default {
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
+}
+.linkOutput {
+  padding-top: 130px;
 }
 @media screen and (max-width: 1279px) {
   .getShowLinks {
