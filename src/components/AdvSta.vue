@@ -15,6 +15,7 @@
             <p>Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instill confidence in your content.</p>
           </div>
         </div>
+        <div class="link"></div>
         <div class="record">
           <div class="recog-img">
             <img src="../assets/images/icon-detailed-records.svg" alt="Brand Recognition Image">
@@ -24,6 +25,7 @@
             <p>Gain insights into who is clicking your links. Knowing when and where people engage with your content helps informs better decisions.</p>
           </div>
         </div>
+        <div class="link"></div>
         <div class="custom">
           <div class="recog-img">
             <img src="../assets/images/icon-fully-customizable.svg" alt="Brand Recognition Image">
@@ -118,12 +120,8 @@ export default {
 .recog-text p {
   color: hsl(0, 0%, 75%);
 }
-.recog::after {
-  content: '';
-  position: absolute;
-  top: 160px;
-  right: -69px;
-  width: 18%;
+.link {
+  width: 8%;
   height: 10px;
   background-color: hsl(180, 66%, 49%);
 }

@@ -67,12 +67,11 @@ export default {
       if(link) {
         this.checkReturn = true;
       }
-      this.wholeLinks.push({
+      this.wholeLinks.unshift({
         mainLink: this.form.linkInput,
         shortLink: this.shortLink,
         id: uuidv4()
       });
-      console.log(this.wholeLinks);
     }
   }
 }
