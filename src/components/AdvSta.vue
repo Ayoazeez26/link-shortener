@@ -15,7 +15,7 @@
             <p>Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instill confidence in your content.</p>
           </div>
         </div>
-        <div class="link"></div>
+        <div class="link one"></div>
         <div class="record">
           <div class="recog-img">
             <img src="../assets/images/icon-detailed-records.svg" alt="Brand Recognition Image">
@@ -25,7 +25,7 @@
             <p>Gain insights into who is clicking your links. Knowing when and where people engage with your content helps informs better decisions.</p>
           </div>
         </div>
-        <div class="link"></div>
+        <div class="link two"></div>
         <div class="custom">
           <div class="recog-img">
             <img src="../assets/images/icon-fully-customizable.svg" alt="Brand Recognition Image">
@@ -125,19 +125,42 @@ export default {
   height: 10px;
   background-color: hsl(180, 66%, 49%);
 }
-
+.one {
+  margin-top: 150px;
+}
+.two {
+  margin-top: 200px;
+}
 @media screen and (max-width: 1279px) {
   .advSta {
     width: 100%;
   }
 }
-
+@media screen and (max-width: 1044px){
+  .recog,
+  .record,
+  .custom {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .recog-text {
+    margin-top: 40px;
+    line-height: 21px;
+    font-size: 15px;
+  }
+}
 @media screen and (max-width: 980px) {
   .desc {
     width: 55%;
   }
 }
+@media screen and (max-width: 942px) {
 
+  .recog-text h4 {
+    font-size: 20px;
+    margin-top: 0;
+  }
+}
 @media screen and (max-width: 768px) {
   .advSta {
     width: 90%;
@@ -146,7 +169,45 @@ export default {
     width: 100%;
   }
   .desc h3 {
-    font-size: 30px;
+    font-size: 27px;
+  }
+  .desc-text {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .one,
+  .two {
+    margin-top: 23px;
+    transform: rotateZ(90deg);
+  }
+  .recog-img {
+    left: 50%;
+    transform: translate(-50%)
+  } 
+  .recog,
+  .record,
+  .custom {
+    width: 90%;
+    height: 270px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .recog-text {
+    margin-top: 60px;
+  }
+  .recog-text h4 {
+    font-size: 24px;
+  }
+  .recog-text p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .custom {
+    margin-top: 50px;
+  }
+  .link {
+    width: 55px;
   }
 }
 </style>
