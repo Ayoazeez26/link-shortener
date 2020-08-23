@@ -1,44 +1,64 @@
 <template>
-  <div class="shortenInput">
-    <form class="flexInputs">
-      <input
-        type="text"
-        name="link"
-        v-model="form.linkInput"
-        id="link"
-        placeholder="Shorten a link here...">
-      <a class="shorten" @click="showLink" href="#">Shorten It!</a>
-    </form>
+  <div class="colorStyle">
+    <div class="getShowLinks">
+      <div class="shortenInput">
+        <form class="flexInputs">
+          <input
+            type="text"
+            name="link"
+            v-model="form.linkInput"
+            id="link"
+            placeholder="Shorten a link here...">
+          <a class="shorten" @click="showLink" href="#">Shorten It!</a>
+        </form>
+      </div>
+      <shortened-links
+        v-show="checkReturn"
+        :linkInput="form.linkInput"
+        :shortLink="shortLink"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import ShortenedLinks from './ShortenedLinks.vue';
 var axios = require('axios');
 export default {
+  components: {
+    'shortened-links' : ShortenedLinks
+  },
   name: 'ShortenInput',
   data() {
     return {
       form: {
         linkInput: ''
-      }
+      },
+      shortLink: '',
+      checkReturn: false
     }
   },
   methods: {
     showLink(e) {
       e.preventDefault();
-      console.log(this.form.linkInput);
       axios
       .post('https://rel.ink/api/links/', {
         url : this.form.linkInput
       })
-      .then(function (response){
-        // console.log(response.data.hashid);
-        axios.get(`https://rel.ink/api/links/${response.data.hashid}/`)
-        .then(console.log(response))
-      })
+      .then(response => {
+        this.getLink(response.data.hashid)
+        }
+      )
       .catch(function (error) {
         console.log(error);
       });
+    },
+    getLink(link) {
+      this.shortLink = `https://rel.ink/api/links/${link}/`;
+      if(link) {
+        this.checkReturn = true;
+      }
+      console.log(this.shortLink, this.checkReturn);
     }
   }
 }
@@ -46,7 +66,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.colorStyle {
+  background-color: #F0F1F6;
+
+}
+.getShowLinks {
+  width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
 .shortenInput {
+  position: absolute;
+  width: 100%;
+  top: -70px;
   background-image: url("../assets/images/bg-shorten-desktop.svg");
   height: 150px;
   border-radius: 15px;
@@ -54,9 +86,6 @@ export default {
   display: flex;
   justify-content: center;
   align-content: center;
-  margin-top: 50px;
-  width: 1280px;
-  margin: 0 auto;
 }
 .flexInputs {
   display: flex;
@@ -85,7 +114,7 @@ export default {
   font-size: 1.5em;
 }
 @media screen and (max-width: 1279px) {
-  .shortenInput {
+  .getShowLinks {
     width: 100%;
   }
 }
@@ -111,10 +140,12 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .shortenInput {
+  .getShowLinks {
     margin-top: 70px;
-    height: 175px;
     width: 90%;
+  }
+  .shortenInput {
+    height: 175px;
   }
   .flexInputs {
     flex-direction: column;

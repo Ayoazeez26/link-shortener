@@ -25,6 +25,7 @@ export default {
   font-size: 18px;
   width: 1280px;
   margin: 0 auto;
+  margin-bottom: 150px;
 }
 
 .big-heading {
