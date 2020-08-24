@@ -35,6 +35,7 @@ export default {
   font-size: 36px;
   text-align: center;
   margin-top: 0;
+  margin-bottom: 12px;
 }
 .cta a {
   color: #FFF;

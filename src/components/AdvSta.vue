@@ -51,6 +51,7 @@ export default {
 .container {
   width: 100%;
   background-color: #F0F1F6;
+  padding-bottom: 70px;
 }
 .advSta {
   display: flex;

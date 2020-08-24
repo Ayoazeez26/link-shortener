@@ -5,6 +5,7 @@
     <ShortenInput />
     <AdvSta />
     <Cta />
+    <Footer />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import FirstSection from './components/FirstSection.vue'
 import ShortenInput from './components/ShortenInput.vue'
 import AdvSta from './components/AdvSta.vue'
 import Cta from './components/Cta.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
@@ -22,7 +24,8 @@ export default {
     FirstSection,
     ShortenInput,
     AdvSta,
-    Cta
+    Cta,
+    Footer
   }
 }
 </script>
