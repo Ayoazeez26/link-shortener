@@ -3,14 +3,30 @@
    <div class="short-link">
     <p>{{linkInput}}</p>
     <a :href="shortLink">{{shortLink}}</a>
-    <button> Copy </button>
+    <button
+      v-clipboard="shortLink"
+      v-clipboard:success="clipboardSuccessHandler"
+      v-clipboard:error="clipboardErrorHandler"
+      ref="change"
+    >
+      Copy
+    </button>
    </div>
  </div>
 </template>
  
 <script>
 export default {
- props: ['linkInput', 'shortLink']
+ props: ['linkInput', 'shortLink'],
+ methods: {
+   clipboardSuccessHandler() {
+    this.$refs.change.innerHTML = 'Copied!';
+    this.$refs.change.style.backgroundColor = 'hsl(257, 27%, 26%)';
+   },
+   clipboardErrorHandler() {
+     console.log('Error!!!');
+   }
+ }
 }
 </script>
 
@@ -42,7 +58,8 @@ export default {
   color: #FFF;
   border-radius: 10px;
   flex-grow: 1;
-  margin-left: 20px;
+  margin-left: 20px;  
+  transition: all .2s cubic-bezier(.03, .84, .18, 1.01);
 }
 @media screen and (max-width: 768px) {
   .short-link {

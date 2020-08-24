@@ -63,7 +63,7 @@ export default {
       });
     },
     getLink(link) {
-      this.shortLink = `https://rel.ink/${link}/`;
+      this.shortLink = `https://rel.ink/api/links/${link}/`;
       if(link) {
         this.checkReturn = true;
       }
