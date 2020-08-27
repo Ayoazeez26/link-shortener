@@ -223,7 +223,7 @@ export default {
   }
   .errorMessage {
     bottom: 63px;
-    left: 47px;
+    left: 20px;
   }
 }
 </style>
