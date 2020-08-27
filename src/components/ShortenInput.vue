@@ -9,7 +9,17 @@
             v-model="form.linkInput"
             id="link"
             placeholder="Shorten a link here...">
-          <a class="shorten" @click="showLink" href="#">Shorten It!</a>
+          <a
+            class="shorten"
+            @click="showLink"
+            href="#">
+            <p>Shorten It!</p>
+            <img
+              v-show="isLoading"
+              src="../assets/images/spinner.gif"
+              alt="spinner"
+            >
+          </a>
         </form>
       </div>
       <div class="linkOutput"> 
@@ -44,12 +54,14 @@ export default {
       },
       wholeLinks: [],
       shortLink: '',
-      checkReturn: false
+      checkReturn: false,
+      isLoading: false
     }
   },
   methods: {
     showLink(e) {
       e.preventDefault();
+      this.isLoading = true;
       axios
       .post('https://rel.ink/api/links/', {
         url : this.form.linkInput
@@ -66,6 +78,7 @@ export default {
       this.shortLink = `https://rel.ink/api/links/${link}/`;
       if(link) {
         this.checkReturn = true;
+        this.isLoading = false;
       }
       this.wholeLinks.unshift({
         mainLink: this.form.linkInput,
@@ -109,22 +122,26 @@ export default {
 #link {
   border-radius: 10px;
   padding: 20px 25px;
-  width: 75%;
+  width: 70%;
   font-size: 24px;
   border: 1px solid #DDD;
 }
 .shorten {
   color: #FFF;
-  padding: 17px 25px;
   border-radius: 10px;
   background-color: hsl(180, 66%, 49%);
   text-decoration: none;
   cursor: pointer;
-  width: 12%;
+  width: 20%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+}
+.shorten p {
+  margin: 0;
   font-size: 1.5em;
+  padding: 17px 20px;
+  text-align: center;
 }
 .linkOutput {
   padding-top: 130px;
@@ -176,8 +193,15 @@ export default {
   }
   .shorten {
     width: 80%;
-    padding: 8px 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    justify-content: center;
+  }
+  .shorten p {
     font-size: 1.1em;
+    padding: 13px 20px;
+    padding-left: 0;
+    text-align: center;
   }
 }
 </style>
