@@ -6,6 +6,7 @@
           <input
             type="text"
             name="link"
+            ref="linkInput"
             v-model="form.linkInput"
             id="link"
             placeholder="Shorten a link here...">
@@ -20,6 +21,11 @@
               alt="spinner"
             >
           </a>
+          <p
+            class="errorMessage"
+            v-show="submitError"
+          >
+            Input a link and include the 'HTTPS'</p>
         </form>
       </div>
       <div class="linkOutput"> 
@@ -55,24 +61,32 @@ export default {
       wholeLinks: [],
       shortLink: '',
       checkReturn: false,
-      isLoading: false
+      isLoading: false,
+      submitError: true
     }
   },
   methods: {
     showLink(e) {
       e.preventDefault();
-      this.isLoading = true;
-      axios
-      .post('https://rel.ink/api/links/', {
-        url : this.form.linkInput
-      })
-      .then(response => {
-        this.getLink(response.data.hashid)
-        }
-      )
-      .catch(function (error) {
-        console.log(error);
-      });
+      if(this.form.linkInput) {
+        this.isLoading = true;
+        this.submitError = false;
+        this.$refs.linkInput.style.border = '2px solid #EEE';
+        axios
+        .post('https://rel.ink/api/links/', {
+          url : this.form.linkInput
+        })
+        .then(response => {
+          this.getLink(response.data.hashid)
+          }
+        )
+        .catch(function (error) {
+          console.log(error);
+        });
+      } else {
+        this.$refs.linkInput.style.border = '2px solid hsl(0, 87%, 67%)';
+        this.submitError = true;
+      }
     },
     getLink(link) {
       this.shortLink = `https://rel.ink/api/links/${link}/`;
@@ -114,6 +128,7 @@ export default {
   align-content: center;
 }
 .flexInputs {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -124,7 +139,7 @@ export default {
   padding: 20px 25px;
   width: 70%;
   font-size: 24px;
-  border: 1px solid #DDD;
+  border: 2px solid hsl(0, 87%, 67%);
 }
 .shorten {
   color: #FFF;
@@ -143,6 +158,12 @@ export default {
   padding: 17px 20px;
   text-align: center;
 }
+.errorMessage {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  color: hsl(0, 87%, 67%);
+}
 .linkOutput {
   padding-top: 130px;
 }
@@ -158,9 +179,6 @@ export default {
   #link {
     width: 70%;
   }
-  .shorten {
-    width: 15%;
-  }
 }
 
 @media screen and (max-width: 875px) {
@@ -168,7 +186,7 @@ export default {
     width: 60%;
   }
   .shorten {
-    width: 20%;
+    width: 27%;
   }
 }
 
@@ -202,6 +220,10 @@ export default {
     padding: 13px 20px;
     padding-left: 0;
     text-align: center;
+  }
+  .errorMessage {
+    bottom: 63px;
+    left: 47px;
   }
 }
 </style>
