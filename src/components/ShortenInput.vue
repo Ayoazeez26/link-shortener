@@ -14,13 +14,14 @@
           <button
             class="shorten"
             @click="showLink"
-            href="#">
-            <p>Shorten It!</p>
+            >
+              Shorten It!
+            <!-- <p>Shorten It!</p>
             <img
               v-show="isLoading"
               src="../assets/images/spinner.gif"
               alt="spinner"
-            >
+            > -->
           </button>
           <p
             class="errorMessage"
@@ -159,13 +160,15 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  text-align: center;
+  font-size: 1.5em;
 }
-.shorten p {
+/* .shorten p {
   margin: 0;
   font-size: 1.5em;
   padding: 17px 20px;
   text-align: center;
-}
+} */
 .errorMessage {
   position: absolute;
   bottom: -6px;
@@ -222,13 +225,14 @@ export default {
     padding-left: 15px;
     padding-right: 15px;
     justify-content: center;
+    font-size: 1.1em;
   }
-  .shorten p {
+  /* .shorten p {
     font-size: 1.1em;
     padding: 13px 20px;
     padding-left: 0;
     text-align: center;
-  }
+  } */
   .errorMessage {
     bottom: 63px;
     left: 20px;
