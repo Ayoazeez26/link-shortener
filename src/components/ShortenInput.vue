@@ -4,26 +4,23 @@
       <div class="shortenInput">
         <form class="flexInputs">
           <input
-            label="name"
-            for="link"
+            aria-label="name"
             type="text"
             name="link"
             ref="linkInput"
             v-model="form.linkInput"
             id="link"
             placeholder="Shorten a link here...">
-          <button class="short">
-            <a
-              class="shorten"
-              @click="showLink"
-              href="#">
-              <p>Shorten It!</p>
-              <img
-                v-show="isLoading"
-                src="../assets/images/spinner.gif"
-                alt="spinner"
-              >
-            </a>
+          <button
+            class="shorten"
+            @click="showLink"
+            href="#">
+            <p>Shorten It!</p>
+            <img
+              v-show="isLoading"
+              src="../assets/images/spinner.gif"
+              alt="spinner"
+            >
           </button>
           <p
             class="errorMessage"
@@ -150,19 +147,15 @@ export default {
   outline: none;
   border: none;
 }
-.short {
-  width: 20%;
-  padding: 0;
-  border: none;
-  border-radius: 20px;
-}
 .shorten {
   color: #FFF;
-  border-radius: 10px;
   background-color: hsl(180, 66%, 49%);
   text-decoration: none;
   cursor: pointer;
-  width: 100%;
+  width: 20%;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -200,7 +193,7 @@ export default {
   #link {
     width: 60%;
   }
-  .short {
+  .shorten {
     width: 27%;
   }
 }
@@ -224,10 +217,8 @@ export default {
     padding: 10px 15px;
     font-size: 20px;
   }
-  .short {
-    width: 80%;
-  }
   .shorten {
+    width: 80%;
     padding-left: 15px;
     padding-right: 15px;
     justify-content: center;
